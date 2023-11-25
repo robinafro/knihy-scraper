@@ -2,53 +2,85 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import quote
 import os
+import json
 
-search_url = "https://www.eknihyzdarma.cz"
+# Specify the encoding when reading the JSON files
+config = json.load(open('config.json', 'r', encoding='utf-8'))
+urls = json.load(open('urls.json', 'r', encoding='utf-8'))
+books = json.load(open('books.json', 'r', encoding='utf-8'))
 
-def download_file(base_url, search_path, search_term, download_directory):
-    search_term_encoded = quote(search_term.encode('windows-1250'), safe='')
+def download_file(url=None, search_path=None, download_class=None, not_found_pattern=None, search_term=""):
+    book_name = search_term.split(' - ')[1]
 
-    url = f"{base_url}{search_path}{search_term_encoded}"
+    print(f"Searching for: {book_name}")
+
+    book_name = quote(book_name.encode('windows-1250'), safe='')
+
+    filename = os.path.join(config["download_dir"], search_term + ".pdf")
+
+    if os.path.exists(filename):
+        return
+
+    search_url = f"{url}{search_path}{book_name}"
+    
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
     }
 
     try:
-        response = requests.get(url, headers=headers)
+        response = requests.get(search_url, headers=headers)
         response.raise_for_status()
 
+        # write response to a file
+        with open('response.html', 'wb') as file:
+             file.write(response.content)
+
         found = True
-
-        if response.text.find("nepovedlo se vyhledat") != -1:
+        
+        if response.text.find(not_found_pattern) != -1:
             found = False
-
-        print(found)
 
         if found:
             # Parse the HTML content
             soup = BeautifulSoup(response.text, 'html.parser')
 
             # Find the download link using the specified class
-            download_link = soup.find('a', class_='download-book-link format-pdf')['href']
-            download_link = base_url + "/" + download_link
+            download_link = soup.find('a', class_=download_class)
+            
+            if not download_link:
+                print("Failed to find book - no download link found")
+                return
+            
+            download_link = download_link.get('href')
+
+            download_link = url + "/" + download_link
 
             print(f"Download link: {download_link}")
 
             # Download the file
             file_response = requests.get(download_link)
             file_response.raise_for_status()
-
-            # Get the filename from the URL
-            filename = os.path.join(download_directory, search_term + ".pdf")
-
+            
             # Save the file to the local directory
             with open(filename, 'wb') as file:
                 file.write(file_response.content)
 
             print(f"File downloaded to: {filename}")
+        else:
+            return
 
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
 
-# Replace 'Babička' with your actual search term
-download_file(search_url, '/eshop-fulltext-search.html?q=', 'Babička', "C:\\Users\\actul\\Downloads\\DownloadedBooks")
+def main():
+    for url in urls:
+        print("Trying URL: " + url)
+
+        data = urls[url]
+
+        for category in books:
+            for book in books[category]:
+                download_file(url=data["url"], search_path=data["search_path"], download_class=data["download_class"], not_found_pattern=data["not_found_pattern"], search_term=book)
+            
+if __name__ == "__main__":
+    main()

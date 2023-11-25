@@ -1,3 +1,8 @@
-[
-    "https://www.eknihyzdarma.cz/"
-]
+{
+    "eknihyzdarma": {
+        "url": "https://www.eknihyzdarma.cz",
+        "search_path": "/eshop-fulltext-search.html?q=",
+        "download_class": "download-book-link format-pdf",
+        "not_found_pattern": "nepovedlo se vyhledat"
+    }
+}
