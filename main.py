@@ -20,16 +20,6 @@ def remove_special_characters(input_string):
     
     return normalized_string
 
-# Modifier functions
-def dbknih_after_search(response):
-    soup = BeautifulSoup(response.text, 'html.parser')
-
-    first_book = soup.find('div', class_='book')
-
-after_search_fncs = {
-    "databazeknih": dbknih_after_search,
-}
-
 def download_file(name=None, url=None, search_path=None, download_class=None, not_found_pattern=None, search_term=""):
     book_name = search_term.split(' - ')[1]
 
@@ -40,6 +30,7 @@ def download_file(name=None, url=None, search_path=None, download_class=None, no
     filename = os.path.join(config["download_dir"], search_term + ".pdf")
 
     if os.path.exists(filename):
+        print("File already exists")
         return
 
     search_url = f"{url}{search_path}{book_name}"
@@ -58,8 +49,6 @@ def download_file(name=None, url=None, search_path=None, download_class=None, no
             found = False
 
         if found:
-            if after_search_fncs.get(name):
-                response = after_search_fncs[name](response)
             # Parse the HTML content
             soup = BeautifulSoup(response.text, 'html.parser')
 
@@ -86,6 +75,7 @@ def download_file(name=None, url=None, search_path=None, download_class=None, no
 
             print(f"File downloaded to: {filename}")
         else:
+            print("Failed to find book - no search results")
             return
 
     except requests.exceptions.RequestException as e:
