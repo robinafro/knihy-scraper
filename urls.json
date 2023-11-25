@@ -4,5 +4,12 @@
         "search_path": "/eshop-fulltext-search.html?q=",
         "download_class": "download-book-link format-pdf",
         "not_found_pattern": "nepovedlo se vyhledat"
+    },
+
+    "databazeknih": {
+        "url": "https://www.databazeknih.cz",
+        "search_path": "/search?q=",
+        "download_class": "download-book-link format-pdf",
+        "not_found_pattern": "Nic jsme nenašli"
     }
 }

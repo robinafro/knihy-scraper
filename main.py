@@ -1,15 +1,36 @@
 import requests
-from bs4 import BeautifulSoup
-from urllib.parse import quote
 import os
 import json
+
+from bs4 import BeautifulSoup
+from urllib.parse import quote
+from unidecode import unidecode
 
 # Specify the encoding when reading the JSON files
 config = json.load(open('config.json', 'r', encoding='utf-8'))
 urls = json.load(open('urls.json', 'r', encoding='utf-8'))
 books = json.load(open('books.json', 'r', encoding='utf-8'))
 
-def download_file(url=None, search_path=None, download_class=None, not_found_pattern=None, search_term=""):
+def remove_special_characters(input_string):
+    # Convert to lowercase and transliterate Unicode characters to ASCII
+    normalized_string = unidecode(input_string.lower())
+    
+    # Remove non-alphanumeric characters
+    normalized_string = ''.join(char for char in normalized_string if char.isalnum() or char.isspace())
+    
+    return normalized_string
+
+# Modifier functions
+def dbknih_after_search(response):
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    first_book = soup.find('div', class_='book')
+
+after_search_fncs = {
+    "databazeknih": dbknih_after_search,
+}
+
+def download_file(name=None, url=None, search_path=None, download_class=None, not_found_pattern=None, search_term=""):
     book_name = search_term.split(' - ')[1]
 
     print(f"Searching for: {book_name}")
@@ -37,6 +58,8 @@ def download_file(url=None, search_path=None, download_class=None, not_found_pat
             found = False
 
         if found:
+            if after_search_fncs.get(name):
+                response = after_search_fncs[name](response)
             # Parse the HTML content
             soup = BeautifulSoup(response.text, 'html.parser')
 
@@ -76,7 +99,7 @@ def main():
 
         for category in books:
             for book in books[category]:
-                download_file(url=data["url"], search_path=data["search_path"], download_class=data["download_class"], not_found_pattern=data["not_found_pattern"], search_term=book)
+                download_file(name=url, url=data["url"], search_path=data["search_path"], download_class=data["download_class"], not_found_pattern=data["not_found_pattern"], search_term=book)
             
 if __name__ == "__main__":
     main()
