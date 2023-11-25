@@ -31,10 +31,6 @@ def download_file(url=None, search_path=None, download_class=None, not_found_pat
         response = requests.get(search_url, headers=headers)
         response.raise_for_status()
 
-        # write response to a file
-        with open('response.html', 'wb') as file:
-             file.write(response.content)
-
         found = True
         
         if response.text.find(not_found_pattern) != -1:
