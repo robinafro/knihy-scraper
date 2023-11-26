@@ -10,9 +10,12 @@ from unidecode import unidecode
 import fitz  # PyMuPDF
 from colorama import init, Fore
 
+from wikipedia import get_book_info
+
 config = json.load(open('config.json', 'r', encoding='utf-8'))
 urls = json.load(open('urls.json', 'r', encoding='utf-8'))
 books = json.load(open('books.json', 'r', encoding='utf-8'))
+category_requirements = json.load(open('category_requirements.json', 'r', encoding='utf-8'))
 
 all_args = []
 
@@ -109,26 +112,50 @@ def main():
             continue
 
         for category in books:
-            for book in books[category]["books"]:
+            for book_data in books[category]["books"]:
+                book = book_data["name"]
+                
                 filename = download_file(name=url, url=data["url"], search_path=data["search_path"], not_found_pattern=data["not_found_pattern"], search_term=book)
 
                 if filename is not None:
                     pages = count_pdf_pages(filename)
-
+                    
                     if pages is not None:
                         if category not in books_by_category:
                             books_by_category[category] = {}
-                    
-                        books_by_category[category][book] = pages
+
+                        if book not in books_by_category[category]:
+                            books_by_category[category][book] = {}
+
+                        books_by_category[category][book]["page_count"] = pages
                     elif "download" in all_args:
                         corrupted_books.append(book)
 
                         if "deletecorrupted" in all_args:
                             printfnc(f"{Fore.RED}Deleting corrupted file: {filename}")
                             os.remove(filename)
-            
+
+                    if category not in books_by_category:
+                        continue
+
+                    if book not in books_by_category[category]:
+                        continue
+
+                    book_info = get_book_info(book)
+
+                    book_info["release_date"] = book_info["release_date"] if book_info["release_date"] is not None else books[category]["default_release_date"]
+                    book_info["author_nationality"] = book_info["author_nationality"] if book_info["author_nationality"] is not None else books[category]["default_author_nationality"]
+
+                    print(Fore.LIGHTGREEN_EX + "  Release date: " + book_info["release_date"])
+                    print(Fore.LIGHTGREEN_EX + "  Author nationality: " + book_info["author_nationality"])
+
+                    books_by_category[category][book]["release_date"] = book_info["release_date"] or "unknown"
+                    books_by_category[category][book]["author_nationality"] = book_info["author_nationality"] or "unknown"
+
 if __name__ == "__main__":
     main()
+
+    message = ""
 
     if "download" in all_args:
         message = f"{Fore.GREEN}Downloaded all available books." + (Fore.RED + " Failed to download: " if len(failed_books) > 0 else "")
@@ -155,12 +182,30 @@ if __name__ == "__main__":
 
     for category, books_in_category in books_by_category.items():
         if "sort" in all_args:
-            books_in_category = sorted(books_in_category.items(), key=lambda x: x[1] if x[1] is not None else float('inf'))
+            books_in_category = sorted(books_in_category.items(), key=lambda x: x[1].get("page_count", float('inf')))
 
         print(f"{Fore.LIGHTBLUE_EX}{category}:")
-        for book, page_count in (books_in_category if "sort" in all_args else books_in_category.items()):
+        for book, data in (books_in_category if "sort" in all_args else books_in_category.items()):
+            page_count = data.get("page_count", float('inf'))
+
             if page_count is not None:
                 print(f"{Fore.CYAN}{book}:   {page_count} pages")
+
+    if "getminimum" in all_args:
+        minimum_required_books = []
+
+        for category, books_in_category in books_by_category.items():
+            for book, data in books_in_category.items():
+                for name, requirements in category_requirements.items():
+                    if requirements["satisfied"] < requirements["required"]:
+                        if data["release_date"] >= (requirements["minimum_release_date"] or data["release_date"]) and data["release_date"] <= (requirements["maximum_release_date"] or data["release_date"]) and data["author_nationality"] == (requirements["author_nationality"] or data["author_nationality"]):
+                            requirements["satisfied"] += 1
+                            minimum_required_books.append(book)
+
+        print("-" * 50)
+        print(f"{Fore.CYAN}Minimum required books: {minimum_required_books}")
+        for book in minimum_required_books:
+            print(f"{Fore.CYAN}  {book}")
 
 
     print(Fore.WHITE)

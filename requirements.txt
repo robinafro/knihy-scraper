@@ -3,3 +3,4 @@ requests
 unidecode
 colorama
 PyMuPDF
+wikipedia-api

@@ -1,0 +1,33 @@
+{
+    "18 stoleti": {
+        "satisfied": 0,
+        "required": 2,
+
+        "maximum_release_date": 1799
+    },
+
+    "19 stoleti": {
+        "satisfied": 0,
+        "required": 3,
+
+        "maximum_release_date": 1899
+    },
+
+    "20-21 stoleti cesky": {
+        "satisfied": 0,
+        "required": 5,
+
+        "author_nationality": "czech",
+
+        "minimum_release_date": 1900
+    },
+
+    "20-21 stoleti necesky": {
+        "satisfied": 0,
+        "required": 5,
+
+        "author_nationality": "not_czech",
+
+        "minimum_release_date": 1900
+    }
+}

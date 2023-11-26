@@ -1,192 +1,495 @@
 {
     "Česká literatura 19. století": {
         "books": [
-            "K. H. Mácha - Máj",
-            "K. J. Erben - Kytice",
-            "K. H. Borovský - Král Lávra",
-            "K. H. Borovský - Tyrolské elegie",
-            "B. Němcová - Babička",
-            "B. Němcová - Divá Bára",
-            "J. Neruda - Balady a romance",
-            "J. Neruda - Povídky malostranské",
-            "J. Arbes - Newtonův mozek",
-            "J. Arbes - Svatý Xaverius",
-            "A. Jirásek - Psohlavci"
+            {
+                "name": "K. H. Mácha - Máj"
+            },
+            {
+                "name": "K. J. Erben - Kytice"
+            },
+            {
+                "name": "K. H. Borovský - Král Lávra"
+            },
+            {
+                "name": "K. H. Borovský - Tyrolské elegie"
+            },
+            {
+                "name": "B. Němcová - Babička"
+            },
+            {
+                "name": "B. Němcová - Divá Bára"
+            },
+            {
+                "name": "J. Neruda - Balady a romance"
+            },
+            {
+                "name": "J. Neruda - Povídky malostranské"
+            },
+            {
+                "name": "J. Arbes - Newtonův mozek"
+            },
+            {
+                "name": "J. Arbes - Svatý Xaverius"
+            },
+            {
+                "name": "A. Jirásek - Psohlavci"
+            }
         ],
 
-        "minium_count": 1
+        "default_release_date": "1850",
+        "default_author_nationality": "czech"
     },
     "Světová a česká dramatická tvorba 19.-21. století": {
         "books": [
-            "J. Vrchlický - Noc na Karlštejně",
-            "A. a V. Mrštíkové - Maryša",
-            "L. Stroupežnický - Naši furianti",
-            "V. Nezval - Manon Lescaut",
-            "K. Čapek - Bílá nemoc",
-            "K. Čapek - Matka",
-            "K. Čapek - R.U.R",
-            "V. Havel - Audience",
-            "V. Havel - Zahradní slavnost",
-            "Cimrmani - České nebe",
-            "Cimrmani - Vyšetřování ztráty třídní knihy",
-            "J. Topol - Sbohem, Sokrate",
-            "N. V. Gogol - Revizor",
-            "O. Wilde - Jak je důležité míti Filipa",
-            "G. B. Shaw - Pygmalion",
-            "A. P. Čechov - Višňový sad",
-            "A. P. Čechov - Tři sestry",
-            "H. Ibsen - Nora"
+            {
+                "name": "J. Vrchlický - Noc na Karlštejně"
+            },
+            {
+                "name": "A. a V. Mrštíkové - Maryša"
+            },
+            {
+                "name": "L. Stroupežnický - Naši furianti"
+            },
+            {
+                "name": "V. Nezval - Manon Lescaut"
+            },
+            {
+                "name": "K. Čapek - Bílá nemoc"
+            },
+            {
+                "name": "K. Čapek - Matka"
+            },
+            {
+                "name": "K. Čapek - R.U.R"
+            },
+            {
+                "name": "V. Havel - Audience"
+            },
+            {
+                "name": "V. Havel - Zahradní slavnost"
+            },
+            {
+                "name": "Cimrmani - České nebe"
+            },
+            {
+                "name": "Cimrmani - Vyšetřování ztráty třídní knihy"
+            },
+            {
+                "name": "J. Topol - Sbohem, Sokrate"
+            },
+            {
+                "name": "N. V. Gogol - Revizor"
+            },
+            {
+                "name": "O. Wilde - Jak je důležité míti Filipa"
+            },
+            {
+                "name": "G. B. Shaw - Pygmalion"
+            },
+            {
+                "name": "A. P. Čechov - Višňový sad"
+            },
+            {
+                "name": "A. P. Čechov - Tři sestry"
+            },
+            {
+                "name": "H. Ibsen - Nora"
+            }
         ],
 
-        "minium_count": 1
+        "default_release_date": "1900",
+        "default_author_nationality": "unknown"
     },
     "Světová a česká poezie 20. a 21. století": {
         "books": [
-            "G. Apollinaire - Kaligramy",
-            "J. Wolker - Těžká hodina",
-            "P. Bezruč - Slezské písně",
-            "F. Gellner - Radosti života",
-            "V. Nezval - Edison",
-            "J. Seifert - Maminka",
-            "J. Skácel - Metličky",
-            "K. Kryl - Kníška Karla Kryla",
-            "V. Hrabě - Blues pro bláznivou holku"
+            {
+                "name": "G. Apollinaire - Kaligramy"
+            },
+            {
+                "name": "J. Wolker - Těžká hodina"
+            },
+            {
+                "name": "P. Bezruč - Slezské písně"
+            },
+            {
+                "name": "F. Gellner - Radosti života"
+            },
+            {
+                "name": "V. Nezval - Edison"
+            },
+            {
+                "name": "J. Seifert - Maminka"
+            },
+            {
+                "name": "J. Skácel - Metličky"
+            },
+            {
+                "name": "K. Kryl - Kníška Karla Kryla"
+            },
+            {
+                "name": "V. Hrabě - Blues pro bláznivou holku"
+            }
         ],
 
-        "minium_count": 1
+        "default_release_date": "1950",
+        "default_author_nationality": "unknown"
     },
     "Světová próza 20. a 21. století": {
         "books": [
-            "F. Kafka - Proměna",
-            "E. Hemingway - Stařec a moře",
-            "A. de S. Exupéry - Malý princ",
-            "J. Steinbeck - O myších a lidech",
-            "F. S. Fitzgerald - Velký Gatsby",
-            "E. M. Remarque - Na západní frontě klid",
-            "E. M. Remarque - Tři kamarádi",
-            "G. Orwell - 1984",
-            "G. Orwell - Farma zvířat",
-            "R. Rolland - Petr a Lucie",
-            "W. Styron - Sophiina volba",
-            "J. Heller - Hlava XXII",
-            "P. Ryan - Jak jsem vyhrál válku",
-            "P. Boulle - Most přes řeku Kwai",
-            "W. Warthon - Hlídka v Ardenách",
-            "J. Kerouac - Na cestě",
-            "U. Eco - Jméno růže",
-            "V. Nabokov - Lolita",
-            "Ch. Bukowski - Všechny řitě světa i ta má",
-            "G. G. Márquez - Kronika ohlášené smrti",
-            "J. R. R. Tolkien - Hobit",
-            "I. Asimov - Já, robot",
-            "J. Salinger - Kdo chytá v žitě",
-            "F. Christiane - My děti ze stanice ZOO",
-            "J. Irving - Svět podle Garpa",
-            "J. Irving - Modlitba za Owena Meanyho",
-            "H. Murakami - Kafka na pobřeží",
-            "H. Murakami - Norské dřevo",
-            "M. Haddon - Podivný případ se psem",
-            "P. Coelho - Alchymista",
-            "S. Larsson - Muži, kteří nenávidí ženy",
-            "Jo Nesbø - Spasitel",
-            "C. McCarthy - Tahle země není pro starý",
-            "C. R. Zafón - Andělská hra",
-            "C. R. Zafón - Stín větru",
-            "D. Nicholls - Otázka za deset",
-            "F. McCourt - Andělin popel",
-            "J. Green - H-vězdy nám nepřály",
-            "R. Bradbury - 451 stupňů Fahrenheita",
-            "A. Christie - Vražda v Orient expresu",
-            "W. Golding - Pán much",
-            "G. Meyrink - Golem",
-            "A. G. Iturbe - Osvětimská knihovnice",
-            "A. Camus - Cizinec",
-            "A. Sapkowski - Zaklínač"
+            {
+                "name": "F. Kafka - Proměna"
+            },
+            {
+                "name": "E. Hemingway - Stařec a moře"
+            },
+            {
+                "name": "A. de S. Exupéry - Malý princ"
+            },
+            {
+                "name": "J. Steinbeck - O myších a lidech"
+            },
+            {
+                "name": "F. S. Fitzgerald - Velký Gatsby"
+            },
+            {
+                "name": "E. M. Remarque - Na západní frontě klid"
+            },
+            {
+                "name": "E. M. Remarque - Tři kamarádi"
+            },
+            {
+                "name": "G. Orwell - 1984"
+            },
+            {
+                "name": "G. Orwell - Farma zvířat"
+            },
+            {
+                "name": "R. Rolland - Petr a Lucie"
+            },
+            {
+                "name": "W. Styron - Sophiina volba"
+            },
+            {
+                "name": "J. Heller - Hlava XXII"
+            },
+            {
+                "name": "P. Ryan - Jak jsem vyhrál válku"
+            },
+            {
+                "name": "P. Boulle - Most přes řeku Kwai"
+            },
+            {
+                "name": "W. Warthon - Hlídka v Ardenách"
+            },
+            {
+                "name": "J. Kerouac - Na cestě"
+            },
+            {
+                "name": "U. Eco - Jméno růže"
+            },
+            {
+                "name": "V. Nabokov - Lolita"
+            },
+            {
+                "name": "Ch. Bukowski - Všechny řitě světa i ta má"
+            },
+            {
+                "name": "G. G. Márquez - Kronika ohlášené smrti"
+            },
+            {
+                "name": "J. R. R. Tolkien - Hobit"
+            },
+            {
+                "name": "I. Asimov - Já, robot"
+            },
+            {
+                "name": "J. Salinger - Kdo chytá v žitě"
+            },
+            {
+                "name": "F. Christiane - My děti ze stanice ZOO"
+            },
+            {
+                "name": "J. Irving - Svět podle Garpa"
+            },
+            {
+                "name": "J. Irving - Modlitba za Owena Meanyho"
+            },
+            {
+                "name": "H. Murakami - Kafka na pobřeží"
+            },
+            {
+                "name": "H. Murakami - Norské dřevo"
+            },
+            {
+                "name": "M. Haddon - Podivný případ se psem"
+            },
+            {
+                "name": "P. Coelho - Alchymista"
+            },
+            {
+                "name": "S. Larsson - Muži, kteří nenávidí ženy"
+            },
+            {
+                "name": "Jo Nesbø - Spasitel"
+            },
+            {
+                "name": "C. McCarthy - Tahle země není pro starý"
+            },
+            {
+                "name": "C. R. Zafón - Andělská hra"
+            },
+            {
+                "name": "C. R. Zafón - Stín větru"
+            },
+            {
+                "name": "D. Nicholls - Otázka za deset"
+            },
+            {
+                "name": "F. McCourt - Andělin popel"
+            },
+            {
+                "name": "J. Green - H-vězdy nám nepřály"
+            },
+            {
+                "name": "R. Bradbury - 451 stupňů Fahrenheita"
+            },
+            {
+                "name": "A. Christie - Vražda v Orient expresu"
+            },
+            {
+                "name": "W. Golding - Pán much"
+            },
+            {
+                "name": "G. Meyrink - Golem"
+            },
+            {
+                "name": "A. G. Iturbe - Osvětimská knihovnice"
+            },
+            {
+                "name": "A. Camus - Cizinec"
+            },
+            {
+                "name": "A. Sapkowski - Zaklínač"
+            }
         ],
 
-        "minium_count": 1
+        "default_release_date": "1950",
+        "default_author_nationality": "not_czech"
     },
     "Česká próza 20. a 21. století": {
         "books": [
-            "J. Hašek - Osudy dobrého vojáka Švejka za světové války",
-            "V. Dyk - Krysař",
-            "V. Vančura - Rozmarné léto",
-            "K. Poláček - Bylo nás pět",
-            "K. Čapek - Válka s mloky",
-            "I. Olbracht - Nikola Šuhaj loupežník",
-            "Z. Jirotka - Saturnin",
-            "B. Hrabal - Obsluhoval jsem anglického krále",
-            "B. Hrabal - Ostře sledované vlaky",
-            "B. Hrabal - Postřižiny",
-            "L. Fuks - Spalovač mrtvol",
-            "A. Lustig - Modlitba pro Kateřinu Horovitzovou",
-            "O. Pavel - Smrt krásných srnců",
-            "V. Páral - Mladý muž a bílá velryba",
-            "M. Kundera - Směšné lásky",
-            "M. Kundera - Žert",
-            "P. Kohout - Hodina tance a lásky",
-            "M. Viewegh - Báječná léta pod psa",
-            "P. Šabach - Opilé banány",
-            "I. Dousková - Hrdý Budžes",
-            "H. Androniková - Zvuk slunečních hodin",
-            "K. Tučková - Vyhnání Gerty Schnirch",
-            "J. Škvorecký - Prima sezóna",
-            "M. Urban - Hastrman",
-            "K. Legátová - Želary, Jozova Hanule",
-            "M. Kundera - Nesnesitelná lehkost bytí"
+            {
+                "name": "J. Hašek - Osudy dobrého vojáka Švejka za světové války"
+            },
+            {
+                "name": "V. Dyk - Krysař"
+            },
+            {
+                "name": "V. Vančura - Rozmarné léto"
+            },
+            {
+                "name": "K. Poláček - Bylo nás pět"
+            },
+            {
+                "name": "K. Čapek - Válka s mloky"
+            },
+            {
+                "name": "I. Olbracht - Nikola Šuhaj loupežník"
+            },
+            {
+                "name": "Z. Jirotka - Saturnin"
+            },
+            {
+                "name": "B. Hrabal - Obsluhoval jsem anglického krále"
+            },
+            {
+                "name": "B. Hrabal - Ostře sledované vlaky"
+            },
+            {
+                "name": "B. Hrabal - Postřižiny"
+            },
+            {
+                "name": "L. Fuks - Spalovač mrtvol"
+            },
+            {
+                "name": "A. Lustig - Modlitba pro Kateřinu Horovitzovou"
+            },
+            {
+                "name": "O. Pavel - Smrt krásných srnců"
+            },
+            {
+                "name": "V. Páral - Mladý muž a bílá velryba"
+            },
+            {
+                "name": "M. Kundera - Směšné lásky"
+            },
+            {
+                "name": "M. Kundera - Žert"
+            },
+            {
+                "name": "P. Kohout - Hodina tance a lásky"
+            },
+            {
+                "name": "M. Viewegh - Báječná léta pod psa"
+            },
+            {
+                "name": "P. Šabach - Opilé banány"
+            },
+            {
+                "name": "I. Dousková - Hrdý Budžes"
+            },
+            {
+                "name": "H. Androniková - Zvuk slunečních hodin"
+            },
+            {
+                "name": "K. Tučková - Vyhnání Gerty Schnirch"
+            },
+            {
+                "name": "J. Škvorecký - Prima sezóna"
+            },
+            {
+                "name": "M. Urban - Hastrman"
+            },
+            {
+                "name": "K. Legátová - Želary, Jozova Hanule"
+            },
+            {
+                "name": "M. Kundera - Nesnesitelná lehkost bytí"
+            }
         ],
 
-        "minium_count": 1
+        "default_release_date": "1950",
+        "default_author_nationality": "czech"
     },
     "Světová a česká literatura do konce 18. století": {
         "books": [
-            "Ovidius - Proměny",
-            "Neznámý autor - Podkoní a žák",
-            "W. Shakespeare - Hamlet, kralevic dánský",
-            "W. Shakespeare - Romeo a Julie",
-            "Boccaccio - Dekameron",
-            "Cervantes - Důmyslný rytíř don Quijote de la Mancha",
-            "Molière - Lakomec",
-            "Molière - Tartuffe",
-            "D. Diderot - Jeptiška",
-            "J. Swift - Gulliverovy cesty",
-            "J. W. Goethe - Utrpení mladého Werthera",
-            "J. La Fontaine - Bajky",
-            "V. Šašek z Bířkova - Deník o jízdě a putování pana Lva z Rožmitálu a z Blatné z Čech až na konec světa",
-            "Neznámý autor - Píseň o Rolandovi",
-            "V. Vratislav z Mitrovic - Příhody",
-            "Karel IV. - Vita Caroli",
-            "Neznámý autor - Legenda o sv. Kateřině",
-            "G. Chaucer - Canterburské povídky"
+            {
+                "name": "Ovidius - Proměny"
+            },
+            {
+                "name": "Neznámý autor - Podkoní a žák"
+            },
+            {
+                "name": "W. Shakespeare - Hamlet, kralevic dánský"
+            },
+            {
+                "name": "W. Shakespeare - Romeo a Julie"
+            },
+            {
+                "name": "Boccaccio - Dekameron"
+            },
+            {
+                "name": "Cervantes - Důmyslný rytíř don Quijote de la Mancha"
+            },
+            {
+                "name": "Molière - Lakomec"
+            },
+            {
+                "name": "Molière - Tartuffe"
+            },
+            {
+                "name": "D. Diderot - Jeptiška"
+            },
+            {
+                "name": "J. Swift - Gulliverovy cesty"
+            },
+            {
+                "name": "J. W. Goethe - Utrpení mladého Werthera"
+            },
+            {
+                "name": "J. La Fontaine - Bajky"
+            },
+            {
+                "name": "V. Šašek z Bířkova - Deník o jízdě a putování pana Lva z Rožmitálu a z Blatné z Čech až na konec světa"
+            },
+            {
+                "name": "Neznámý autor - Píseň o Rolandovi"
+            },
+            {
+                "name": "V. Vratislav z Mitrovic - Příhody"
+            },
+            {
+                "name": "Karel IV. - Vita Caroli"
+            },
+            {
+                "name": "Neznámý autor - Legenda o sv. Kateřině"
+            },
+            {
+                "name": "G. Chaucer - Canterburské povídky"
+            }
         ],
 
-        "minium_count": 1
+        "default_release_date": "1790",
+        "default_author_nationality": "unknown"
     },
     "Světová literatura 19. století": {
         "books": [
-            "E. A. Poe - Havran",
-            "E. A. Poe - Jáma a kyvadlo",
-            "M. Shelleyová - Frankenstein neboli moderní Prométheus",
-            "A. S. Puškin - Evžen Oněgin",
-            "Ch. Dickens - Oliver Twist",
-            "F. M. Dostojevskij - Zločin a trest",
-            "F. M. Dostojevski - Hráč",
-            "L. N. Tolstoj - Anna Karenina",
-            "E. Zola - Zabiják",
-            "H. Sienkiewicz - Quo vadis?",
-            "Stendhal - Červený a černý",
-            "O. Wilde - Obraz Doriana Graye",
-            "G. de Maupassant - Miláček",
-            "Ch. Baudelaire - Květy zla",
-            "H. Ch. Andersen - Pohádky a povídky",
-            "J. F. Cooper - Poslední Mohykán",
-            "H. Melville - Bílá velryba",
-            "A. C. Doyle - Dobrodružství Sherlocka Holmese",
-            "A. C. Doyle - Pes baskervilský",
-            "M. Twain - Dobrodružství Toma Sawyera",
-            "J. Verne - Dvacet tisíc mil pod mořem"
+            {
+                "name": "E. A. Poe - Havran"
+            },
+            {
+                "name": "E. A. Poe - Jáma a kyvadlo"
+            },
+            {
+                "name": "M. Shelleyová - Frankenstein neboli moderní Prométheus"
+            },
+            {
+                "name": "A. S. Puškin - Evžen Oněgin"
+            },
+            {
+                "name": "Ch. Dickens - Oliver Twist"
+            },
+            {
+                "name": "F. M. Dostojevskij - Zločin a trest"
+            },
+            {
+                "name": "F. M. Dostojevski - Hráč"
+            },
+            {
+                "name": "L. N. Tolstoj - Anna Karenina"
+            },
+            {
+                "name": "E. Zola - Zabiják"
+            },
+            {
+                "name": "H. Sienkiewicz - Quo vadis?"
+            },
+            {
+                "name": "Stendhal - Červený a černý"
+            },
+            {
+                "name": "O. Wilde - Obraz Doriana Graye"
+            },
+            {
+                "name": "G. de Maupassant - Miláček"
+            },
+            {
+                "name": "Ch. Baudelaire - Květy zla"
+            },
+            {
+                "name": "H. Ch. Andersen - Pohádky a povídky"
+            },
+            {
+                "name": "J. F. Cooper - Poslední Mohykán"
+            },
+            {
+                "name": "H. Melville - Bílá velryba"
+            },
+            {
+                "name": "A. C. Doyle - Dobrodružství Sherlocka Holmese"
+            },
+            {
+                "name": "A. C. Doyle - Pes baskervilský"
+            },
+            {
+                "name": "M. Twain - Dobrodružství Toma Sawyera"
+            },
+            {
+                "name": "J. Verne - Dvacet tisíc mil pod mořem"
+            }
         ],
 
-        "minium_count": 1
+        "default_release_date": "1850",
+        "default_author_nationality": "not_czech"
     }
 }
