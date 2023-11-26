@@ -75,7 +75,7 @@ def download_file(name=None, url=None, search_path=None, not_found_pattern=None,
 
 def main():
     for url in urls:
-        print("{Fore.LIGHTBLUE_EX}Trying URL: " + url)
+        print(f"{Fore.LIGHTBLUE_EX}Trying URL: " + url)
 
         data = urls[url]
 
