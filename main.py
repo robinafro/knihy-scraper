@@ -19,12 +19,14 @@ all_args = []
 for arg in sys.argv:
     all_args.append(arg.lower())
 
-if platform.system() == "Linux" and config["download_dir"].startswith("C:"):
-    printfnc(f"{Fore.RED}You're on Linux but the download directory starts with C: - please change it in config.json")
-    exit()
+if config["download_dir"].startswith("/"):
+    config["download_dir"] = config["download_dir"][1:]
 
-if not os.path.exists(config["download_dir"]):
-    os.makedirs(config["download_dir"])
+if not config["download_dir"].startswith('\\'):
+    config["download_dir"] = '\\' + config["download_dir"]
+
+if not os.path.exists(os.path.expanduser('~') + config["download_dir"]):
+    os.makedirs(os.path.expanduser('~') + config["download_dir"])
 
 failed_books = []
 corrupted_books = []
@@ -54,7 +56,7 @@ def download_file(name=None, url=None, search_path=None, not_found_pattern=None,
     
         book_name = quote(book_name.encode('windows-1250'), safe='')
 
-        filename = os.path.join(config["download_dir"], remove_special_characters(search_term) + ".pdf")
+        filename = os.path.join(os.path.expanduser('~') + config["download_dir"], remove_special_characters(search_term) + ".pdf")
 
         if not os.path.exists(filename):
             if "download" in all_args:
@@ -128,7 +130,8 @@ def main():
 if __name__ == "__main__":
     main()
 
-    message = f"{Fore.GREEN}Downloaded all available books." + (Fore.RED + " Failed to download: " if len(failed_books) > 0 else "")
+    if "download" in all_args:
+        message = f"{Fore.GREEN}Downloaded all available books." + (Fore.RED + " Failed to download: " if len(failed_books) > 0 else "")
     
     i = 0
     for book in failed_books:
