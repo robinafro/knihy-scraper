@@ -6,74 +6,76 @@ import json
 from bs4 import BeautifulSoup
 from urllib.parse import quote
 from unidecode import unidecode
+from colorama import init, Fore
 
-# Specify the encoding when reading the JSON files
 config = json.load(open('config.json', 'r', encoding='utf-8'))
 urls = json.load(open('urls.json', 'r', encoding='utf-8'))
 books = json.load(open('books.json', 'r', encoding='utf-8'))
 
 if platform.system() == "Linux" and config["download_dir"].startswith("C:"):
-    print("You're on Linux but the download directory starts with C: - please change it in config.json")
+    print(f"{Fore.RED}You're on Linux but the download directory starts with C: - please change it in config.json")
     exit()
 
 if not os.path.exists(config["download_dir"]):
     os.makedirs(config["download_dir"])
 
+failed_books = []
+
 def remove_special_characters(string):
     return "".join([c for c in string if c.isalpha() or c.isdigit() or c==' ']).rstrip()
 
 def download_file(name=None, url=None, search_path=None, not_found_pattern=None, search_term=""):
-    book_name = search_term.split(' - ')[1]
-
-    print(f"Searching for: {book_name}")
-
-    book_name = quote(book_name.encode('windows-1250'), safe='')
-
-    filename = os.path.join(config["download_dir"], remove_special_characters(search_term) + ".pdf")
-
-    if os.path.exists(filename):
-        print("File already exists")
-        return
-
-    search_url = f"{url}{search_path}{book_name} pdf"
-    
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-    }
-
     try:
+        book_name = search_term.split(' - ')[1]
+
+        print(f"{Fore.LIGHTBLUE_EX}Searching for: {book_name}")
+    
+        book_name = quote(book_name.encode('windows-1250'), safe='')
+
+        filename = os.path.join(config["download_dir"], remove_special_characters(search_term) + ".pdf")
+
+        if os.path.exists(filename):
+            print(f"{Fore.YELLOW}File already exists")
+            return
+
+        search_url = f"{url}{search_path}{book_name} pdf"
+        
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        }
+
+    
         response = requests.get(search_url, headers=headers)
         response.raise_for_status()
 
         found = True
         
         if response.text.find(not_found_pattern) != -1:
-            print("Failed to find book - no search results")
+            print(f"{Fore.RED}Failed to find book - no search results")
             return
         
-        # Parse the HTML content
         soup = BeautifulSoup(response.text, 'html.parser')
 
         download_link = soup.find('a', jsname="UWckNb")["href"]
         
-        print(f"Download link: {download_link}")
-
-        # Download the file
+        print(f"{Fore.LIGHTBLUE_EX}Download link: {download_link}")
+        
         file_response = requests.get(download_link)
         file_response.raise_for_status()
         
-        # Save the file to the local directory
         with open(filename, 'wb') as file:
             file.write(file_response.content)
 
-        print(f"File downloaded to: {filename}")
+        print(f"{Fore.GREEN}File downloaded to: {filename}")
 
     except requests.exceptions.RequestException as e:
-        print(f"Error: {e}")
+        print(f"{Fore.RED}Error: {e}")
+
+        failed_books.append(search_term)
 
 def main():
     for url in urls:
-        print("Trying URL: " + url)
+        print("{Fore.LIGHTBLUE_EX}Trying URL: " + url)
 
         data = urls[url]
 
@@ -86,3 +88,18 @@ def main():
             
 if __name__ == "__main__":
     main()
+
+    message = f"{Fore.GREEN}Downloaded all available books." + (Fore.RED + " Failed to download: " if len(failed_books) > 0 else "")
+    
+    i = 0
+    for book in failed_books:
+        i += 1
+
+        message += book + (", " if i < len(failed_books) else "")
+
+    print(message)
+
+    if len(failed_books) > 0:
+        print(Fore.MAGENTA + "FIY: If any books failed to download, it's probably caused by the website having policies against web scraping.")
+    
+    print(Fore.WHITE)
