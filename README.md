@@ -2,7 +2,7 @@
 web scraper na maturitní četbu
 
 - stáhne všechny knihy jako .pdf
-- porovná knihy podle velikosi abys nemusel číst `(coming soon)`
+- porovná knihy podle velikosi `(coming soon)`
 - seřadí knihy podle kategorií `(coming soon)`
 
 # Instalace
