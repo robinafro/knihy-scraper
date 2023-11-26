@@ -1,8 +1,7 @@
 {
-    "eknihyzdarma": {
-        "url": "https://www.eknihyzdarma.cz",
-        "search_path": "/eshop-fulltext-search.html?q=",
-        "download_class": "download-book-link format-pdf",
-        "not_found_pattern": "nepovedlo se vyhledat"
+    "google": {
+        "url": "https://www.google.cz",
+        "search_path": "/search?q=",
+        "not_found_pattern": "Use this parameter if you're searching on small websites. On Google, there will pretty much always be a result, so we don't need to use this."
     }
 }
