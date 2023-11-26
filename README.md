@@ -21,7 +21,7 @@ web scraper na maturitní četbu
 # Disclaimer
 - občas se stane, že se nějakou knihu nepodaří stáhnout. ve většině případů je to způsobeno anti-botovskou ochranou, kterou má server, ze kterého se kniha stahuje. pokud opravdu moc chcete číst, je v takovém případě je potřeba knihu stáhnout ručně.
 - občas se také některá kniha stáhne, ale je poškozena. to fakt neni muj problém, pravděpodobně maj dosraný servery - můžete použít parametr `deletecorrupted`, který smaže všechny poškozené knihy.
-
+- také se může stát, že e-kniha neexistuje. v tom případě se vám stáhne nějaká sračka, můžete si jí jít půčit do knihovny třeba.
 - jo a kdyžtak se tohle dá použít na jiný věci než knihy, ale musí to být PDF soubory.
 
 # Licence
