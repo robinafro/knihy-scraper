@@ -109,7 +109,7 @@ def main():
             continue
 
         for category in books:
-            for book in books[category]:
+            for book in books[category]["books"]:
                 filename = download_file(name=url, url=data["url"], search_path=data["search_path"], not_found_pattern=data["not_found_pattern"], search_term=book)
 
                 if filename is not None:
