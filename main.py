@@ -197,7 +197,7 @@ if __name__ == "__main__":
 
         for category, books_in_category in books_by_category.items():
             for book, data in books_in_category.items():
-                for name, requirements in category_requirements.items():
+                for name, requirements in category_requirements["categories"].items():
                     if requirements["satisfied"] < requirements["required"]:
                         if (int(data["release_date"]) >= int(requirements.get("minimum_release_date", data["release_date"]))) and (int(data["release_date"]) <= int(requirements.get("maximum", data["release_date"]))) and (data["author_nationality"] == requirements.get("author_nationality") or data["author_nationality"]):
                             if book in minimum_required_books:
@@ -211,6 +211,33 @@ if __name__ == "__main__":
                             requirements["satisfied"] += 1
                             minimum_required_books[book] = data
                             already_added_authors.append(author)
+
+        all_categories_merged = {}
+        for category, books_in_category in books_by_category.items():
+            for book, data in books_in_category.items():
+                if all_categories_merged.get("category") is None:
+                    all_categories_merged["category"] = {}
+                
+                all_categories_merged["category"][book] = data
+
+        if len(minimum_required_books) < category_requirements["minimum_books"]:
+            for category, books_in_category in all_categories_merged.items():
+                for book, data in books_in_category.items():
+                    if book in minimum_required_books:
+                        continue
+
+                    author = book.split(' - ')[0]
+
+                    if author in already_added_authors:
+                        continue
+
+                    if len(minimum_required_books) >= category_requirements["minimum_books"]:
+                        break
+
+                    minimum_required_books[book] = data
+                    already_added_authors.append(author)
+
+                    print(f"{Fore.YELLOW}Added book {book} because there weren't enough books to satisfy the minimum requirements.")
 
         print("-" * 50)
         print(f"{Fore.CYAN}Minimum required books:")

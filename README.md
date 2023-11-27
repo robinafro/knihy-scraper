@@ -3,7 +3,7 @@ web scraper na maturitní četbu
 
 - stáhne všechny knihy jako .pdf
 - seřadí knihy podle velikosi
-- vybere vám nejkratší knihy z každé kategorie. (coming soon)
+- vybere vám nejkratší knihy z každé kategorie. (beta, nemusí vždy fungovat perfektně)
 
 # Instalace
 - stáhni si repozitář `git clone https://github.com/actulurus/knihy-scraper.git`
