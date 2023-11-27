@@ -192,20 +192,30 @@ if __name__ == "__main__":
                 print(f"{Fore.CYAN}{book}:   {page_count} pages")
 
     if "getminimum" in all_args:
-        minimum_required_books = []
+        minimum_required_books = {}
+        already_added_authors = []
 
         for category, books_in_category in books_by_category.items():
             for book, data in books_in_category.items():
                 for name, requirements in category_requirements.items():
                     if requirements["satisfied"] < requirements["required"]:
-                        if data["release_date"] >= (requirements["minimum_release_date"] or data["release_date"]) and data["release_date"] <= (requirements["maximum_release_date"] or data["release_date"]) and data["author_nationality"] == (requirements["author_nationality"] or data["author_nationality"]):
+                        if (int(data["release_date"]) >= int(requirements.get("minimum_release_date", data["release_date"]))) and (int(data["release_date"]) <= int(requirements.get("maximum", data["release_date"]))) and (data["author_nationality"] == requirements.get("author_nationality") or data["author_nationality"]):
+                            if book in minimum_required_books:
+                                continue
+
+                            author = book.split(' - ')[0]
+
+                            if author in already_added_authors:
+                                continue
+
                             requirements["satisfied"] += 1
-                            minimum_required_books.append(book)
+                            minimum_required_books[book] = data
+                            already_added_authors.append(author)
 
         print("-" * 50)
-        print(f"{Fore.CYAN}Minimum required books: {minimum_required_books}")
-        for book in minimum_required_books:
-            print(f"{Fore.CYAN}  {book}")
+        print(f"{Fore.CYAN}Minimum required books:")
+        for book, data in minimum_required_books.items():
+            print(f"{Fore.CYAN}  {book}: {data['page_count']} pages")
 
 
     print(Fore.WHITE)
